@@ -1,5 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api');
-const {gameOptions, againOptions} = require('/options');
+const {gameOptions, againOptions} = require('./options');
 const token = "6295481522:AAG-A5PhRWKUNVyxaK0_wW0qrm2Ah7OSlyw";
 
 const bot = new TelegramBot(token, {polling: true});
@@ -45,7 +45,7 @@ const start = () => {
             return startGame(chatId);
         }
 
-        if (data === chats[chatId]) {
+        if (data == chats[chatId]) {
             return bot.sendMessage(chatId, `Поздравляю, ты отгадал цифру ${chats[chatId]}`, againOptions);
         } else {
             return bot.sendMessage(chatId, `К сожалению, ты не угадал цифру ${chats[chatId]}`, againOptions);
